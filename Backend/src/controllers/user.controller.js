@@ -65,14 +65,23 @@ const token = JWT.sign({ userId: user._id }, process.env.REFRESH_TOKEN_SECRET, {
 
 
 //get current user
-const getCurrentUser = asyncHandler(async (req, res) => {
+const getAllUser= asyncHandler(async (req, res) => {
   const user = await User.find().sort({ createdAt: -1 });
   return res
     .status(200)
-    .json(new ApiResponse(200, user, "user fetched successfully"));
+    .json(new ApiResponse(200, user, " All user fetched successfully"));
 });
 
+//get profile
+
+const getProfile = asyncHandler(async(req,res)=>{
+  let user = req.user;
+    return res
+      .status(200)
+      .json(new ApiResponse(200, user, "user fetched successfully"));
+})
 
 
 
-export { registerUser, loginUser, getCurrentUser};
+
+export { registerUser, loginUser, getAllUser, getProfile};
