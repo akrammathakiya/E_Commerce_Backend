@@ -4,6 +4,7 @@ import { app } from "./app.js";
 import userRouter from "./routes/user.route.js";
 import productRouter from "./routes/product.route.js";
 import cartRouter from "./routes/cart.route.js";
+import addressRouter from "./routes/address.route.js"
 
 
 
@@ -20,6 +21,8 @@ app.use('/api/product',productRouter)
 //cart router
 app.use('/api/cart',cartRouter)
 
+//address router
+app.use("/api/address", addressRouter);
 
 dotenv.config({
   path: "./.env",
